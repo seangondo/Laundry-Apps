@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:fontFamily="sans-serif-black"
+            android:text="My Laundry"
+            android:textAlignment="center"
+            android:textColor="#2196F3"
+            android:textSize="34sp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="316dp"
+            android:layout_height="103dp"
+            android:layout_marginStart="44dp"
+
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="67dp"
+                android:layout_height="62dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="18dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_account_circle_24" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="20dp"
+                android:text="Hello,"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/bLogOut"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="220dp"
+                android:layout_marginTop="15dp"
+                android:text="Log Out" />
+
+            <TextView
+                android:id="@+id/myid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="50dp"
+                android:text=""
+                android:textSize="15sp" />
+        </androidx.cardview.widget.CardView>
+        <![CDATA[
+
+
+
+
+
+
+
+
+
+            />
+
+
+
+
+
+    ]]>
+    </LinearLayout>
+</FrameLayout>
