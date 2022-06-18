@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
         url = getString(R.string.urlServer);
         errMsg = (TextView) findViewById(R.id.msgError);
         bLogin = (Button) findViewById(R.id.bLog);
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         autoLog = (CheckBox) findViewById(R.id.cbLog);
 
         bLogin.setOnClickListener(myClickListener);
+
 
         mydb = new DBHandler(this);
         getData();
@@ -128,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
     class ReqTask extends AsyncTask<String, String, String> {
 
+        final LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);
         @Override
         protected String doInBackground(String... uri) {
             try {
@@ -150,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 else if (uri[1] == "HEAD") {
                     con.setRequestMethod(uri[1]);
                     con.setConnectTimeout(5000); //set timeout to 5 seconds
-                    return "false";
+                    return "test";
                 }
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -163,10 +166,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
+        protected void onPreExecute() {
+            loadingDialog.startDialog();
+        }
+
+        @Override
         protected void onPostExecute(String s) {
             JSONArray myRec = null;
-            if(s != "false") {
+            if(s == "false") {
+                loadingDialog.dismissDialog();
+                Toast.makeText(getBaseContext(), "Failed connect to server.\nPlease try again later!", Toast.LENGTH_SHORT).show();
+                errMsg.setVisibility(View.INVISIBLE);
+
+            } else if(s == "test"){
+                loadingDialog.dismissDialog();
+                errMsg.setVisibility(View.INVISIBLE);
+            } else {
                 try {
+                    loadingDialog.dismissDialog();
                     myRec = new JSONArray(s);
                     JSONObject arrObj = myRec.getJSONObject(0);
                     a = arrObj.getString("username");
@@ -177,9 +194,6 @@ public class MainActivity extends AppCompatActivity {
                     checkPw();
                     e.printStackTrace();
                 }
-            } else {
-                Toast.makeText(getBaseContext(), "Failed connect to server.\nPlease try again later!", Toast.LENGTH_SHORT).show();
-                errMsg.setVisibility(View.INVISIBLE);
             }
         }
     }

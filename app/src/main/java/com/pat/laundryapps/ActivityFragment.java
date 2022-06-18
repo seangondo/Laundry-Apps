@@ -107,7 +107,7 @@ public class ActivityFragment extends Fragment {
                     myRec = new JSONArray(output);
                     for(int i = 0; i < myRec.length(); i++) {
                         JSONObject myRecObj = myRec.getJSONObject(i);
-                        if (myRecObj.getString("receive").equals("Belum Diterima")) {
+                        if (!myRecObj.getString("status").equals("Selesai")) {
                             id.add(myRecObj.getString("OrderID"));
                             telp.add(myRecObj.getString("username"));
                             tgl.add(myRecObj.getString("entryDate"));

@@ -112,9 +112,8 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                 methodLogout();
                 break;
             case R.id.bcall:
-                requestPermissions(new String[]{CALL_PHONE}, 1);
-                Intent cIntent = new Intent(Intent.ACTION_CALL);
-                cIntent.setData(Uri.parse("tel:6281330679849"));
+                Intent cIntent = new Intent(Intent.ACTION_DIAL);
+                cIntent.setData(Uri.parse("tel:+6281330679849"));
                 startActivity(cIntent);
                 break;
         }

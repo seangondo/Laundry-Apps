@@ -1,6 +1,8 @@
 package com.pat.laundryapps;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,6 +59,11 @@ public class CustomAdapter extends BaseAdapter {
         mystat.setText(String.valueOf("Status: "+stat.get(i)));
         mymetode.setText(String.valueOf("Metode Ambil: "+metode.get(i)));
         myditerima.setText(String.valueOf("Status Terima: "+diterima.get(i)));
+        if(String.valueOf(diterima.get(i)).equals("Belum Diterima") & String.valueOf(stat.get(i)).equals("Selesai")) {
+            view.setBackgroundColor(Color.YELLOW);
+        } else {
+            view.setBackgroundColor(Color.WHITE);
+        }
         return view;
     }
 }
